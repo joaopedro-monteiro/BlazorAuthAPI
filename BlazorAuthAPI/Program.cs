@@ -9,6 +9,7 @@ builder.Services.RegisterDatabase();
 builder.Services.RegisterDocumentation();
 builder.Services.RegisterMappers();
 builder.Services.RegisterRepository();
+builder.Services.RegisterServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
