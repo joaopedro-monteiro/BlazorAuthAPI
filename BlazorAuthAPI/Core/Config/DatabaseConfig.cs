@@ -7,7 +7,7 @@ namespace BlazorAuthAPI.Core.Config
     {
         public static void RegisterDatabase(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("BlazorAuthDb"));
+            services.AddDbContext<AppDbContext>();
         }
     }
 }
