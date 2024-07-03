@@ -7,22 +7,22 @@ namespace BlazorAuthAPI.Api.Users.Services
 {
     public class UserService(IUserRepository userRepository, IUserMapper userMapper) : IUserService
     {
-        public User Create(UserRequest userRequest)
+        public async Task<User> Create(UserRequest userRequest)
         {
             var userToCreate = userMapper.ToModel(userRequest);
-            var createdUser = userRepository.Create(userToCreate);
+            var createdUser = await userRepository.Create(userToCreate);
 
             return createdUser;
         }
 
         public void Delete(Guid id)
         {
-            userRepository.DeleteById(id);
+             userRepository.DeleteById(id);
         }
 
-        public ICollection<User> FindAll()
+        public async Task<ICollection<User>> FindAll()
         {
-            var users = userRepository.FindAll();
+            var users = await userRepository.FindAll();
 
             return users;
         }

@@ -5,10 +5,10 @@ namespace BlazorAuthAPI.Core.Repository.User
 {
     public class UserRepository(AppDbContext context) : IUserRepository
     {
-        public Models.User Create(Models.User model)
+        public async Task<Models.User> Create(Models.User model)
         {
-            context.Users.Add(model);
-            context.SaveChanges();
+            await context.Users.AddAsync(model);
+            await context.SaveChangesAsync();
 
             return model;
         }
@@ -23,11 +23,6 @@ namespace BlazorAuthAPI.Core.Repository.User
             context.SaveChanges();
         }
 
-        public ICollection<Models.User> FindAll()
-        {
-            var users = context.Users.AsNoTracking().ToList();
-            
-            return users;
-        }
+        public async Task<ICollection<Models.User>> FindAll() => await context.Users.ToListAsync();
     }
 }

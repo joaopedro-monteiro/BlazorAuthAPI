@@ -8,8 +8,8 @@ namespace BlazorAuth.Shared.Interface;
 
 public interface ICrudRepository<TModel, in TId>
 {
-    ICollection<TModel> FindAll();
-    TModel Create(TModel model);
+    Task<ICollection<TModel>> FindAll();
+    Task<TModel> Create(TModel model);
     void DeleteById(TId id);
 }
 

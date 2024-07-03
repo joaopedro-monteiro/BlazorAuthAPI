@@ -5,8 +5,8 @@ namespace BlazorAuthAPI.Api.Users.Services
 {
     public interface IUserService
     {
-        User Create(UserRequest userRequest);
+        Task<User> Create(UserRequest userRequest);
         void Delete(Guid id);
-        ICollection<User> FindAll();
+        Task<ICollection<User>> FindAll();
     }
 }
