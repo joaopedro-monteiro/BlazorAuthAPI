@@ -1,5 +1,6 @@
 ﻿using BlazorAuthAPI.Api.Users.Dtos;
 using BlazorAuthAPI.Api.Users.Services;
+using BlazorAuthAPI.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorAuthAPI.Api.Users.Controller
@@ -9,11 +10,11 @@ namespace BlazorAuthAPI.Api.Users.Controller
     public class UsersController(IUserService userService) : ControllerBase
     {
         [HttpPost(Name = "CreateUser")]
-        public IActionResult Create([FromForm]UserRequest userRequest)
+        public async Task<ActionResult<User>> Create([FromForm]UserRequest userRequest)
         {
-            var body = userService.Create(userRequest);
+            var body = await userService.Create(userRequest);
 
-            return Created($"/api/users/{body.Id}", body);
+            return Ok(body);
         }
 
         [HttpDelete("{id:Guid}", Name = "DeleteUserById")]
@@ -24,9 +25,9 @@ namespace BlazorAuthAPI.Api.Users.Controller
         }
 
         [HttpGet(Name = "FindAllUsers")]
-        public IActionResult FindAll()
+        public async Task<ActionResult> FindAll()
         {
-            var users = userService.FindAll();
+            var users = await userService.FindAll();
             return Ok(users);
         }
     }

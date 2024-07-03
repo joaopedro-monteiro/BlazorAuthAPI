@@ -7,10 +7,9 @@ namespace BlazorAuthAPI.Core.Repository.User
     {
         public async Task<Models.User> Create(Models.User model)
         {
-            await context.Users.AddAsync(model);
+            var newUser = context.Users.Add(model).Entity;
             await context.SaveChangesAsync();
-
-            return model;
+            return newUser;
         }
 
         public void DeleteById(Guid id)
