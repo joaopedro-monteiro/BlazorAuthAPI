@@ -1,5 +1,4 @@
-﻿
-using BlazorAuthAPI.Core.Data.Contexts;
+﻿using BlazorAuthAPI.Core.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorAuthAPI.Core.Repository.User
