@@ -9,7 +9,7 @@ namespace BlazorAuthAPI.Api.Users.Controller
     public class UsersController(IUserService userService) : ControllerBase
     {
         [HttpPost(Name = "CreateUser")]
-        public IActionResult Create(UserRequest userRequest)
+        public IActionResult Create([FromForm]UserRequest userRequest)
         {
             var body = userService.Create(userRequest);
 
