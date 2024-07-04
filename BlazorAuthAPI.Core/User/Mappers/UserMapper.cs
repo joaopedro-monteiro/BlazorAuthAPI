@@ -1,11 +1,11 @@
-﻿using BlazorAuthAPI.Core.User.Dtos;
+﻿using BlazorAuthAPI.Core.User.Commands;
 using BlazorAuthAPI.Core.User.Entities;
 
 namespace BlazorAuthAPI.Core.User.Mappers
 {
     public class UserMapper : IUserMapper
     {
-        public Entities.User ToModel(UserRequest userRequest)
+        public Entities.User ToModel(AddNewUserCommand userRequest)
         {
             return new Entities.User
             {

@@ -1,4 +1,4 @@
-﻿using BlazorAuthAPI.Core.User.Dtos;
+﻿using BlazorAuthAPI.Core.User.Commands;
 using BlazorAuthAPI.Core.User.Entities;
 using BlazorAuthAPI.Core.User.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ namespace BlazorAuthAPI.Api.Users.Controller
     public class UsersController(IUserService userService) : ControllerBase
     {
         [HttpPost(Name = "CreateUser")]
-        public async Task<ActionResult<User>> Create(UserRequest userRequest)
+        public async Task<ActionResult<User>> Create(AddNewUserCommand userRequest)
         {
             var body = await userService.Create(userRequest);
 

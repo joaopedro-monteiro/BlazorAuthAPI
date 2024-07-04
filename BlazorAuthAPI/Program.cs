@@ -59,8 +59,8 @@ void SeedDatabase(IApplicationBuilder app)
     var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
     context?.Users.AddRange(
-        new User { Name = "Admin", Email = "admin@example.com", PasswordHashed = "admin123", Cpf = "679.448.630-07", Role = "Admin" },
-        new User { Name = "User", Email = "user@example.com", PasswordHashed = "user123", Cpf = "583.404.300-33", Role = "User" }
+        new User { Name = "Admin", Email = "admin@example.com", PasswordHashed = "admin123", Cpf = "679.448.630-07", Role  = 0 },
+        new User { Name = "User", Email = "user@example.com", PasswordHashed = "user123", Cpf = "583.404.300-33", Role = 0 }
     );
 
     context?.SaveChanges();
