@@ -1,30 +1,28 @@
 ﻿using BlazorAuthAPI.Core.User.Commands;
 using BlazorAuthAPI.Core.User.Entities;
-using BlazorAuthAPI.Core.User.Mappers;
 using BlazorAuthAPI.Core.User.Repository.User;
 
 namespace BlazorAuthAPI.Core.User.Services
 {
-    public class UserService(IUserRepository userRepository, IUserMapper userMapper) : IUserService
-    {
-        public async Task<Entities.User> Create(AddNewUserCommand userRequest)
-        {
-            var userToCreate = userMapper.ToModel(userRequest);
-            var createdUser = await userRepository.Create(userToCreate);
+    //public class UserService(IUserRepository userRepository) : IUserService
+    //{
+    //    public async Task<Entities.User> Create(AddNewUserCommand newUser)
+    //    {
+    //        var createdUser = await userRepository.Create(newUser);
 
-            return createdUser;
-        }
+    //        return Ok;
+    //    }
 
-        public void Delete(Guid id)
-        {
-            userRepository.DeleteById(id);
-        }
+    //    public void Delete(Guid id)
+    //    {
+    //        userRepository.DeleteById(id);
+    //    }
 
-        public async Task<ICollection<Entities.User>> FindAll()
-        {
-            var users = await userRepository.FindAll();
+    //    public async Task<ICollection<Entities.User>> FindAll()
+    //    {
+    //        var users = await userRepository.FindAll();
 
-            return users;
-        }
-    }
+    //        return users;
+    //    }
+    //}
 }

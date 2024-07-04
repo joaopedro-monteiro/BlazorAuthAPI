@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.RegisterDatabase();
-builder.Services.RegisterMappers();
 builder.Services.RegisterRepository();
 builder.Services.RegisterServices();
 builder.Services.AddSwaggerGen(option =>
