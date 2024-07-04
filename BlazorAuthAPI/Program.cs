@@ -1,7 +1,12 @@
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.DependencyInjection;
+using BlazorAuthAPI.Core.Shared.Jwt;
 using BlazorAuthAPI.Core.User.Entities;
+using Duett.Api.Middlewares.Error;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,9 +17,9 @@ builder.Services.RegisterDatabase();
 builder.Services.RegisterServices();
 builder.Services.RegisterAutoMapper(assemblies);
 builder.Services.RegisterFluentValidation(assemblies);
-builder.Services.AddSwaggerGen(option =>
+builder.Services.AddSwaggerGen(options =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo
+    options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
         Title = "BlazorAuthAPI",
@@ -26,7 +31,53 @@ builder.Services.AddSwaggerGen(option =>
             Email = "joaopedrobdmgbr@gmail.com"
         }
     });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme.",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
 });
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = JwtOptions.Issuer,
+
+            ValidateAudience = true,
+            ValidAudience = JwtOptions.Audience,
+
+            ValidateLifetime = true,
+
+            IssuerSigningKey = JwtOptions.GetSymmetricSecurityKey(),
+            ValidateIssuerSigningKey = true
+        };
+    });
+
+builder.Services.AddHttpContextAccessor();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -53,6 +104,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 app.MapControllers();
 
 void SeedDatabase(IApplicationBuilder app)
@@ -61,7 +114,7 @@ void SeedDatabase(IApplicationBuilder app)
     var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
     context?.Users.AddRange(
-        new User { Name = "Admin", Email = "admin@example.com", PasswordHashed = "admin123", Cpf = "679.448.630-07", Role  = 0 },
+        new User { Name = "Admin", Email = "admin@example.com", PasswordHashed = "admin123", Cpf = "679.448.630-07", Role = 0 },
         new User { Name = "User", Email = "user@example.com", PasswordHashed = "user123", Cpf = "583.404.300-33", Role = 0 }
     );
 
