@@ -1,5 +1,4 @@
 ﻿using BlazorAuthAPI.Core.Data.EntityConfig;
-using BlazorAuthAPI.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorAuthAPI.Core.Data.Contexts
@@ -10,7 +9,7 @@ namespace BlazorAuthAPI.Core.Data.Contexts
             : base(options)
         {
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User.Entities.User> Users { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

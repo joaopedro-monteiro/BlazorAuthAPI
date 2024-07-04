@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorAuthAPI.Core.Config
+namespace BlazorAuthAPI.Core.DependencyInjection
 {
     public static class DatabaseConfig
     {

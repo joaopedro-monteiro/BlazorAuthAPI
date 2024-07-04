@@ -1,10 +1,9 @@
-﻿using BlazorAuthAPI.Api.Users.Dtos;
-using BlazorAuthAPI.Core.Models;
+﻿using BlazorAuthAPI.Core.User.Dtos;
 
-namespace BlazorAuthAPI.Api.Users.Mappers
+namespace BlazorAuthAPI.Core.User.Mappers
 {
     public interface IUserMapper
     {
-        User ToModel(UserRequest userRequest);
+        Entities.User ToModel(UserRequest userRequest);
     }
 }

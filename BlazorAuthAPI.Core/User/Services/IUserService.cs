@@ -1,12 +1,11 @@
-﻿using BlazorAuthAPI.Api.Users.Dtos;
-using BlazorAuthAPI.Core.Models;
+﻿using BlazorAuthAPI.Core.User.Dtos;
 
-namespace BlazorAuthAPI.Api.Users.Services
+namespace BlazorAuthAPI.Core.User.Services
 {
     public interface IUserService
     {
-        Task<User> Create(UserRequest userRequest);
+        Task<Entities.User> Create(UserRequest userRequest);
         void Delete(Guid id);
-        Task<ICollection<User>> FindAll();
+        Task<ICollection<Entities.User>> FindAll();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BlazorAuthAPI.Core.Models
+﻿namespace BlazorAuthAPI.Core.User.Entities
 {
     public class User
     {

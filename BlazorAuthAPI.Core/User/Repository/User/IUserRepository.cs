@@ -1,8 +1,8 @@
 ﻿using BlazorAuth.Shared.Interface;
 
-namespace BlazorAuthAPI.Core.Repository.User
+namespace BlazorAuthAPI.Core.User.Repository.User
 {
-    public interface IUserRepository : ICrudRepository<Models.User, Guid>
+    public interface IUserRepository : ICrudRepository<Entities.User, Guid>
     {
     }
 }

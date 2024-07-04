@@ -1,7 +1,7 @@
-﻿using BlazorAuthAPI.Api.Users.Services;
+﻿using BlazorAuthAPI.Core.User.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorAuthAPI.Core.Config
+namespace BlazorAuthAPI.Core.DependencyInjection
 {
     public static class ServicesConfig
     {

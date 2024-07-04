@@ -1,11 +1,11 @@
 ﻿using BlazorAuthAPI.Core.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorAuthAPI.Core.Repository.User
+namespace BlazorAuthAPI.Core.User.Repository.User
 {
     public class UserRepository(AppDbContext context) : IUserRepository
     {
-        public async Task<Models.User> Create(Models.User model)
+        public async Task<Entities.User> Create(Entities.User model)
         {
             var newUser = context.Users.Add(model).Entity;
             await context.SaveChangesAsync();
@@ -22,6 +22,6 @@ namespace BlazorAuthAPI.Core.Repository.User
             context.SaveChanges();
         }
 
-        public async Task<ICollection<Models.User>> FindAll() => await context.Users.ToListAsync();
+        public async Task<ICollection<Entities.User>> FindAll() => await context.Users.ToListAsync();
     }
 }

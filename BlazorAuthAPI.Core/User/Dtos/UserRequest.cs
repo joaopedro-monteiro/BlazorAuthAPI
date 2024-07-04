@@ -1,4 +1,4 @@
-﻿namespace BlazorAuthAPI.Api.Users.Dtos
+﻿namespace BlazorAuthAPI.Core.User.Dtos
 {
     public class UserRequest
     {

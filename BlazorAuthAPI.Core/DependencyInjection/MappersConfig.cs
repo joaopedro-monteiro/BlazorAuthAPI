@@ -1,7 +1,7 @@
-﻿using BlazorAuthAPI.Api.Users.Mappers;
+﻿using BlazorAuthAPI.Core.User.Mappers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorAuthAPI.Core.Config
+namespace BlazorAuthAPI.Core.DependencyInjection
 {
     public static class MappersConfig
     {

@@ -1,6 +1,6 @@
-using BlazorAuthAPI.Core.Config;
 using BlazorAuthAPI.Core.Data.Contexts;
-using BlazorAuthAPI.Core.Models;
+using BlazorAuthAPI.Core.DependencyInjection;
+using BlazorAuthAPI.Core.User.Entities;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,7 +1,7 @@
-﻿using BlazorAuthAPI.Core.Repository.User;
+﻿using BlazorAuthAPI.Core.User.Repository.User;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorAuthAPI.Core.Config
+namespace BlazorAuthAPI.Core.DependencyInjection
 {
     public static class RepositoryConfig
     {

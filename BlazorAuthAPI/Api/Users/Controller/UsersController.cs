@@ -1,6 +1,6 @@
-﻿using BlazorAuthAPI.Api.Users.Dtos;
-using BlazorAuthAPI.Api.Users.Services;
-using BlazorAuthAPI.Core.Models;
+﻿using BlazorAuthAPI.Core.User.Dtos;
+using BlazorAuthAPI.Core.User.Entities;
+using BlazorAuthAPI.Core.User.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorAuthAPI.Api.Users.Controller
