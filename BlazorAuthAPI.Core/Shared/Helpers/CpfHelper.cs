@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorAuthAPI.Core.Shared.Extensions;
 
 namespace BlazorAuthAPI.Core.Shared.Helpers
 {
@@ -40,11 +41,6 @@ namespace BlazorAuthAPI.Core.Shared.Helpers
             digito += resto;
 
             return cpf.EndsWith(digito);
-        }
-
-        public static bool HasOnlyNumbers(this string value)
-        {
-            return !string.IsNullOrEmpty(value) && value.All(v => v is >= '0' and <= '9');
         }
     }
 }
