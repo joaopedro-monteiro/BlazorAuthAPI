@@ -4,8 +4,8 @@ namespace BlazorAuthAPI.Core.User.Services
 {
     public interface IUserService
     {
-        Task<Entities.User> Create(AddNewUserCommand userRequest);
-        void Delete(Guid id);
-        Task<ICollection<Entities.User>> FindAll();
+        Task<Entities.User> CreateAsync(AddNewUserCommand userRequest);
+        Task DeleteAsync(Guid id);
+        Task<ICollection<Entities.User>> FindAllAsync();
     }
 }

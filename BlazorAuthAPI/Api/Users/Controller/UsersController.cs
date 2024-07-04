@@ -12,7 +12,7 @@ namespace BlazorAuthAPI.Api.Users.Controller
         [HttpPost(Name = "CreateUser")]
         public async Task<ActionResult<User>> Create(AddNewUserCommand userRequest)
         {
-            var body = await userService.Create(userRequest);
+            var body = await userService.CreateAsync(userRequest);
 
             return Ok(body);
         }
@@ -20,14 +20,14 @@ namespace BlazorAuthAPI.Api.Users.Controller
         [HttpDelete("{id:Guid}", Name = "DeleteUserById")]
         public IActionResult Delete(Guid id)
         {
-            userService.Delete(id);
+            userService.DeleteAsync(id);
             return NoContent();
         }
 
         [HttpGet(Name = "FindAllUsers")]
         public async Task<ActionResult> FindAll()
         {
-            var users = await userService.FindAll();
+            var users = await userService.FindAllAsync();
             return Ok(users);
         }
     }

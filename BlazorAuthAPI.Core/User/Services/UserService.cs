@@ -1,28 +1,32 @@
-﻿using BlazorAuthAPI.Core.User.Commands;
-using BlazorAuthAPI.Core.User.Entities;
-using BlazorAuthAPI.Core.User.Repository.User;
+﻿using AutoMapper;
+using BlazorAuthAPI.Core.Data.Contexts;
+using BlazorAuthAPI.Core.User.Commands;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorAuthAPI.Core.User.Services
 {
-    public class UserService(IUserRepository userRepository) : IUserService
+    public class UserService(IMapper mapper, AppDbContext context) : IUserService
     {
-        public async Task<Entities.User> Create(AddNewUserCommand newUser)
+        public async Task<Entities.User> CreateAsync(AddNewUserCommand userRequest)
         {
-            //var createdUser = await userRepository.Create(newUser);
+            var user = mapper.Map<Entities.User>(userRequest);
 
-            return null;
+            await context.Users.AddAsync(user);
+            await context.SaveChangesAsync();
+
+            return user;
         }
 
-        public void Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            userRepository.DeleteById(id);
+            var user = await context.Users.FindAsync(id);
+
+            if (user == null) throw new Exception("User not found");
+
+            context.Users.Remove(user);
+            await context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<Entities.User>> FindAll()
-        {
-            var users = await userRepository.FindAll();
-
-            return users;
-        }
+        public async Task<ICollection<Entities.User>> FindAllAsync() => await context.Users.ToListAsync();
     }
 }

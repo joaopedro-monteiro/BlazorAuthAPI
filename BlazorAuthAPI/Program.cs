@@ -4,11 +4,12 @@ using BlazorAuthAPI.Core.User.Entities;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var assemblies = typeof(AppDbContext).Assembly;
 
 // Add services to the container.
 builder.Services.RegisterDatabase();
-builder.Services.RegisterRepository();
 builder.Services.RegisterServices();
+builder.Services.RegisterAutoMapper(assemblies);
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo
