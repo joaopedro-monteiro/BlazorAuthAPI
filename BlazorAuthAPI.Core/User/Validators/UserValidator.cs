@@ -21,13 +21,13 @@ namespace BlazorAuthAPI.Core.User.Validators
                 .NotEmpty()
                 .WithMessage("O nome é obrigatório")
                 .Length(1, 100)
-                .WithMessage("O nome deve possuir até 200 caracteres");
+                .WithMessage("O nome deve possuir até 100 caracteres");
 
             RuleFor(r => r.Email)
                 .NotEmpty()
                 .WithMessage("O e-mail é obrigatório")
                 .Length(1, 100)
-                .WithMessage("O e-mail deve possuir até 200 caracteres")
+                .WithMessage("O e-mail deve possuir até 100 caracteres")
                 .EmailAddress()
                 .WithMessage("Informe um e-mail válido")
                 .MustAsync(EmailUnicoAsync)

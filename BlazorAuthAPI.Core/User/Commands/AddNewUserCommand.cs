@@ -1,4 +1,5 @@
-﻿using BlazorAuthAPI.Core.User.Enum;
+﻿using System.Text.Json.Serialization;
+using BlazorAuthAPI.Core.User.Enum;
 
 namespace BlazorAuthAPI.Core.User.Commands
 {
@@ -18,8 +19,7 @@ namespace BlazorAuthAPI.Core.User.Commands
             get => _email;
             set => _email = value?.Trim().ToLower();
         }
-
-        public string? Password { get; set; }
+        public string? PasswordHashed { get; set; }
         public string? Cpf { get; set; }
         public AccessLevel Role { get; set; }
     }

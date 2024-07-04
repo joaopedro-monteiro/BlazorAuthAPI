@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlazorAuthAPI.Core.Data.Contexts;
+using BlazorAuthAPI.Core.Shared.Helpers;
 using BlazorAuthAPI.Core.User.Commands;
 using BlazorAuthAPI.Core.User.QueryCommand;
 using FluentValidation;
@@ -13,7 +14,8 @@ namespace BlazorAuthAPI.Core.User.Services
         {
             var user = mapper.Map<Entities.User>(userRequest);
 
-            await validator.ValidateAndThrowAsync(user);
+            await validator.ValidateAsync(user);
+            user.PasswordHashed = PasswordHelper.HashPassword(user.PasswordHashed!);
             await context.Users.AddAsync(user);
             await context.SaveChangesAsync();
 
