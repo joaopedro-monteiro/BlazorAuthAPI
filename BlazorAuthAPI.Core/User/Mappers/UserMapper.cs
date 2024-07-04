@@ -11,7 +11,7 @@ namespace BlazorAuthAPI.Core.User.Mappers
             {
                 Name = userRequest.Name,
                 Email = userRequest.Email,
-                Password = userRequest.Password,
+                PasswordHashed = userRequest.Password,
                 Cpf = userRequest.Cpf,
                 Role = userRequest.Role
             };
