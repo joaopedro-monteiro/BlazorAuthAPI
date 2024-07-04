@@ -1,4 +1,5 @@
 ﻿using BlazorAuthAPI.Api.Users.Mappers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorAuthAPI.Core.Config
 {

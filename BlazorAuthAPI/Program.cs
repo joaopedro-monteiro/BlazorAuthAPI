@@ -1,15 +1,30 @@
 using BlazorAuthAPI.Core.Config;
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.Models;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.RegisterDatabase();
-builder.Services.RegisterDocumentation();
 builder.Services.RegisterMappers();
 builder.Services.RegisterRepository();
 builder.Services.RegisterServices();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "BlazorAuthAPI",
+        Description = "API para cadastro e login de usuários",
+        Contact = new OpenApiContact
+        {
+            Name = "João Pedro Monteiro",
+            Url = new Uri("https://www.linkedin.com/in/joaopedro-monteiro/"),
+            Email = "joaopedrobdmgbr@gmail.com"
+        }
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

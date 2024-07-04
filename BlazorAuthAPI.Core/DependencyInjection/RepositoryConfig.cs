@@ -1,4 +1,5 @@
 ﻿using BlazorAuthAPI.Core.Repository.User;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorAuthAPI.Core.Config
 {

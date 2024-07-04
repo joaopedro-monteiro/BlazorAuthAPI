@@ -1,5 +1,6 @@
 ﻿using BlazorAuthAPI.Core.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorAuthAPI.Core.Config
 {
