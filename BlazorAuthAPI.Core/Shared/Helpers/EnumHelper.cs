@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlazorAuthAPI.Core.Shared
+﻿namespace BlazorAuthAPI.Core.Shared.Helpers
 {
     public static class EnumHelper
     {

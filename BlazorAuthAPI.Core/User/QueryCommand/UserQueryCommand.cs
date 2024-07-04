@@ -1,5 +1,5 @@
-﻿using BlazorAuthAPI.Core.User.Enum;
-using BlazorAuthAPI.Core.Shared;
+﻿using BlazorAuthAPI.Core.Shared.Helpers;
+using BlazorAuthAPI.Core.User.Enum;
 
 namespace BlazorAuthAPI.Core.User.QueryCommand
 {

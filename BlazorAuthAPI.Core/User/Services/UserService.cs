@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.User.Commands;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorAuthAPI.Core.User.Services
 {
-    public class UserService(IMapper mapper, AppDbContext context) : IUserService
+    public class UserService(IMapper mapper, AppDbContext context, IValidator<Entities.User> validator) : IUserService
     {
         public async Task<Entities.User> CreateAsync(AddNewUserCommand userRequest)
         {
             var user = mapper.Map<Entities.User>(userRequest);
 
+            await validator.ValidateAndThrowAsync(user);
             await context.Users.AddAsync(user);
             await context.SaveChangesAsync();
 
