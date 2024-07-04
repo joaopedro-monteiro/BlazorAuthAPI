@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.User.Commands;
+using BlazorAuthAPI.Core.User.QueryCommand;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +29,5 @@ namespace BlazorAuthAPI.Core.User.Services
             context.Users.Remove(user);
             await context.SaveChangesAsync();
         }
-
-        public async Task<ICollection<Entities.User>> FindAllAsync() => await context.Users.ToListAsync();
     }
 }

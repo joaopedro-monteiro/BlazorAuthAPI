@@ -6,6 +6,5 @@ namespace BlazorAuthAPI.Core.User.Services
     {
         Task<Entities.User> CreateAsync(AddNewUserCommand userRequest);
         Task DeleteAsync(Guid id);
-        Task<ICollection<Entities.User>> FindAllAsync();
     }
 }

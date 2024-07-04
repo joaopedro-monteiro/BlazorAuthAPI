@@ -1,6 +1,7 @@
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.DependencyInjection;
 using BlazorAuthAPI.Core.User.Entities;
+using FluentValidation;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ var assemblies = typeof(AppDbContext).Assembly;
 builder.Services.RegisterDatabase();
 builder.Services.RegisterServices();
 builder.Services.RegisterAutoMapper(assemblies);
+builder.Services.RegisterFluentValidation(assemblies);
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo
