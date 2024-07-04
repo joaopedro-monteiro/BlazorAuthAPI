@@ -1,8 +1,13 @@
 using BlazorAuth.Components;
+using BlazorAuth.Config;
+using BlazorAuth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.RegisterServices();
+builder.Services.AddHttpClient();
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 

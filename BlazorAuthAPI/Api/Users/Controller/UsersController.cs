@@ -10,7 +10,7 @@ namespace BlazorAuthAPI.Api.Users.Controller
     public class UsersController(IUserService userService) : ControllerBase
     {
         [HttpPost(Name = "CreateUser")]
-        public async Task<ActionResult<User>> Create([FromForm]UserRequest userRequest)
+        public async Task<ActionResult<User>> Create(UserRequest userRequest)
         {
             var body = await userService.Create(userRequest);
 

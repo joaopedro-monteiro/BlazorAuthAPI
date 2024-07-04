@@ -8,9 +8,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuthAPI", "BlazorAuth
 		{C7C0B34A-239C-436B-893D-BC02EC11ADD6} = {C7C0B34A-239C-436B-893D-BC02EC11ADD6}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAuth", "BlazorAuth\BlazorAuth.csproj", "{2AB9FA8F-1881-47EA-A9D3-47666C9D51D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuth", "BlazorAuth\BlazorAuth.csproj", "{2AB9FA8F-1881-47EA-A9D3-47666C9D51D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAuth.Shared", "BlazorAuth.Shared\BlazorAuth.Shared.csproj", "{C7C0B34A-239C-436B-893D-BC02EC11ADD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuth.Shared", "BlazorAuth.Shared\BlazorAuth.Shared.csproj", "{C7C0B34A-239C-436B-893D-BC02EC11ADD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
