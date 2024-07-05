@@ -25,7 +25,7 @@ namespace BlazorAuthAPI.Core.User.Services
             if (!PasswordHelper.VerifyPassword(changePasswordRequest.CurrentPassword, user.PasswordHashed))
                 throw new Exception("Senha atual inválida");
 
-            user.PasswordHashed = PasswordHelper.HashPassword(changePasswordRequest.NewPassword!);
+            user.PasswordHashed = changePasswordRequest.PasswordHashed;
 
             context.Update(user);
             await context.SaveChangesAsync();

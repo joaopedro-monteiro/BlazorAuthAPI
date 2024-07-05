@@ -11,6 +11,6 @@ namespace BlazorAuthAPI.Core.User.Commands
     {
         public string? CurrentPassword { get; set; }
         public string? NewPassword { get; set; }
-        //public string? PasswordHashed => string.IsNullOrEmpty(NewPassword) ? null : PasswordHelper.HashPassword(NewPassword);
+        public string? PasswordHashed => string.IsNullOrEmpty(NewPassword) ? null : PasswordHelper.HashPassword(NewPassword);
     }
 }

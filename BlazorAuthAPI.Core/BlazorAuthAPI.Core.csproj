@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorAuth.Shared\BlazorAuth.Shared.csproj" />
     <ProjectReference Include="..\BlazorAuth\BlazorAuth.csproj" />
   </ItemGroup>
 

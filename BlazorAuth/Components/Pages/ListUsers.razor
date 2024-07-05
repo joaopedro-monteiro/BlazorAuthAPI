@@ -1,0 +1,59 @@
+﻿@page "/users"
+@using BlazorAuth.Commands
+@rendermode InteractiveServer
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Perfil</th>
+            <th scope="col">Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var user in Users)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Cpf</td>
+                <td>@user.Role!.Value</td>
+                    <td><button class="btn  btn-danger" @onclick="() => DeleteUser(user.Id)"> Deleta</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<UserCommand> Users { get; set; } = new();
+
+    private async Task LoadUsers()
+    {
+        var users = await UserService.GetUsersAsync();
+
+        Users.Clear();
+
+        if (users == null) return;
+
+        foreach (var user in users)
+        {
+            Users.Add(user);
+        }
+    }
+
+    private async Task DeleteUser(Guid id)
+    {
+        await UserService.DeleteAsync(id);
+        await LoadUsers();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+}

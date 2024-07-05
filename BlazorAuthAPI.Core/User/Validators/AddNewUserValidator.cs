@@ -34,5 +34,6 @@ public class AddNewUserValidator : AbstractValidator<AddNewUserCommand>
         RuleFor(r => r.Role)
             .IsInEnum()
             .WithMessage("Selecione um perfil válido");
+
     }
 }

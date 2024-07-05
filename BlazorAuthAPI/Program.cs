@@ -1,6 +1,8 @@
+using BlazorAuthAPI.Auth;
 using BlazorAuthAPI.Core.Data.Contexts;
 using BlazorAuthAPI.Core.DependencyInjection;
 using BlazorAuthAPI.Core.Shared.Jwt;
+using BlazorAuthAPI.Core.User;
 using BlazorAuthAPI.Core.User.Entities;
 using Duett.Api.Middlewares.Error;
 using FluentValidation;
@@ -17,6 +19,7 @@ builder.Services.RegisterDatabase();
 builder.Services.RegisterServices();
 builder.Services.RegisterAutoMapper(assemblies);
 builder.Services.RegisterFluentValidation(assemblies);
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo

@@ -1,5 +1,6 @@
 using BlazorAuth.Components;
 using BlazorAuth.Config;
+using BlazorAuth.Middleware;
 using BlazorAuth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.RegisterServices();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -25,6 +27,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.UseMiddleware<CookieMiddleware>();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
