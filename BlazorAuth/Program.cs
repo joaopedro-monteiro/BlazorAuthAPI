@@ -1,7 +1,9 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using BlazorAuth.Components;
 using BlazorAuth.Config;
-using BlazorAuth.Middleware;
-using BlazorAuth.Services;
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.RegisterServices();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddBlazoredSessionStorage();
+builder.Services.AddBlazoredLocalStorage(config =>
+{
+    config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+    config.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    config.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+    config.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    config.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    config.JsonSerializerOptions.ReadCommentHandling = JsonCommentHandling.Skip;
+    config.JsonSerializerOptions.WriteIndented = false;
+});
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -27,8 +40,6 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
-
-app.UseMiddleware<CookieMiddleware>();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

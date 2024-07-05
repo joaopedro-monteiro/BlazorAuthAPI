@@ -9,6 +9,9 @@
 @using BlazorAuth
 @using BlazorAuth.Components
 @using BlazorAuth.Services
+@using Blazored.LocalStorage
+@using Blazored.SessionStorage
 
-@inject IUserService UserService;
+@inject IUserService UserService
 @inject NavigationManager Navigation
+@inject ISessionStorageService StorageService

@@ -9,10 +9,10 @@ namespace BlazorAuthAPI.Core.DependencyInjection
         public static void RegisterDatabase(this IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(
-                "Server=localhost;Database=BlazorAuthAPI;User Id=sa;Password=ef66b58b-6ff2-4c78-bcec-6b279312b625;TrustServerCertificate=True;MultipleActiveResultSets=true;"));
+            //options.UseSqlServer(
+            //    "Server=localhost;Database=BlazorAuthAPI;User Id=sa;Password=ef66b58b-6ff2-4c78-bcec-6b279312b625;TrustServerCertificate=True;MultipleActiveResultSets=true;"));
 
-            //options.UseInMemoryDatabase("Duett"));
+            options.UseInMemoryDatabase("Duett"));
         }
     }
 }
