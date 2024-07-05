@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Components\Pages\ChangePassword.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BlazorInputMask" Version="1.0.24" />
   </ItemGroup>
 

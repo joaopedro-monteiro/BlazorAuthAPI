@@ -23,8 +23,10 @@ namespace BlazorAuthAPI.Core.Results
                 userInfo.Add("cpf", user.Cpf);
 
             Token = JwtService.GenerateToken(userInfo);
+            UserId = user.Id;
         }
 
         public string Token { get; set; }
+        public Guid UserId { get; set; }
     }
 }

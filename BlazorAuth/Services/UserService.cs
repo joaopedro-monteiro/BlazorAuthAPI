@@ -21,10 +21,11 @@ public class UserService : IUserService
         _httpClient.BaseAddress = new Uri(_url);
     }
 
-    public async Task<ApiResult> ChangePasswordAsync(Guid id, ChangePasswordCommand changePasswordRequest)
+    public async Task<ApiResult> ChangePasswordAsync(ChangePasswordCommand changePasswordRequest)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
-        var response = await _httpClient.PutAsJsonAsync($"/api/users/{id}/change-password", changePasswordRequest);
+
+        var response = await _httpClient.PutAsJsonAsync($"/api/users/change-password", changePasswordRequest);
 
         if (response.IsSuccessStatusCode)
             return new ApiResult { Success = true };
